@@ -1,6 +1,6 @@
 /*
  * Program : analogRead
- * Boards  : Mega,Mega 2560,Mega ADK,Due
+ * Boards  : Mega
  * 2017/10/01 Akitomo Kuraku
  */
 
