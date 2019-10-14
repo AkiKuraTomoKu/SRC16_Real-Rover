@@ -1,5 +1,6 @@
 SRC16_Rover	KEYWORD1
 Rover	KEYWORD1
+rover KEYWORD1
 
 init	KEYWORD2
 motor	KEYWORD2

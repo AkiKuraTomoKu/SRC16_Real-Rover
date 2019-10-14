@@ -74,6 +74,8 @@ void Rover::motor(int l,int r){
 }
 
 void Rover::flag(bool val){
+	Serial.print("rover.flag : ");
+	Serial.println(val);
 	if(val){
 		_flag.write(90);
 	}else{
