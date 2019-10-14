@@ -10,6 +10,8 @@
 #include <Adafruit_BNO055.h>
 #include "SRC16_Rover.h"
 
+Rover rover;
+
 Rover::Rover(){
 
 }
@@ -26,6 +28,9 @@ bool Rover::init(){
 	for(int i=0;i<3;i++){
 		pinMode(_led_pin[i],OUTPUT);
 		digitalWrite(_led_pin[i],LOW);
+	}
+	for(int i=0;i<2;i++){
+		pinMode(_sw_pin[i],INPUT_PULLUP);
 	}
 	_flag.attach(_servo_pin);
 
@@ -162,4 +167,8 @@ void Rover::led3(bool a,bool b,bool c){
 
 void Rover::led(uint8_t num,bool val){
 	digitalWrite(_led_pin[num],val);
+}
+
+bool Rover::getSW(uint8_t num){
+	return (!digitalRead(_sw_pin[num]));
 }
