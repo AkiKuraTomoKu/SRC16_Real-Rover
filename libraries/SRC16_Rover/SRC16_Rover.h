@@ -63,7 +63,7 @@ private:
 		{8,7,10}
 	};
 	const uint8_t _led_pin[3]={31,33,35};
-	const uint8_t _sw_pin[2]{37,41};
+	const uint8_t _sw_pin[2]{41,37};
 	unsigned long _start_time=0;
 };
 
