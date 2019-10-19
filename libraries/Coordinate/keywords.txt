@@ -1,0 +1,6 @@
+Coordinate	KEYWORD1
+coordinate	KEYWORD1
+
+XYset	KEYWORD2
+hypotenuse	KEYWORD2
+theta	KEYWORD2
