@@ -6,7 +6,7 @@ double distance=0.0,angle=0.0;
 
 void setup(void){
 	rover.init();
-	target.set(135.887452,35.004943);
+	target.set(135.887452,35.004943);//ウカルちゃんアリーナ
 	delay(1000);
 }
 
