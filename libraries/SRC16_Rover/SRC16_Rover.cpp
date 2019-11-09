@@ -32,7 +32,10 @@ bool Rover::init(){
 	for(int i=0;i<2;i++){
 		pinMode(_sw_pin[i],INPUT_PULLUP);
 	}
+	pinMode(_hcsr04_trig,OUTPUT);
+	pinMode(_hcsr04_echo,INPUT);
 	_flag.attach(_servo_pin);
+	flag(false);
 
 	if(!_bno.begin()){
 		Serial.println(F("ERROR,no BNO055 detected..."));
@@ -90,6 +93,7 @@ void Rover::GPSdelay(unsigned long ms){
 			_tiny.encode(Serial2.read());
 	}while((millis()-_start_time)<ms);
 }
+
 void Rover::GPSserial(void){
 	Serial.print(year());
 	Serial.print("/");
@@ -156,9 +160,14 @@ uint32_t Rover::sat(void){
 	return _tiny.satellites.value();
 }
 
-double Rover::getBNO(void){
+double Rover::getBNO(double n){
 	_bno.getEvent(&_event);
-	return _event.orientation.x;
+	_dir=_event.orientation.x+360-n;
+	if(_dir>=360.0){
+		return (_dir-360.0);
+	}else{
+		return (_dir);
+	}
 }
 
 void Rover::led3(bool a,bool b,bool c){
@@ -173,4 +182,22 @@ void Rover::led(uint8_t num,bool val){
 
 bool Rover::getSW(uint8_t num){
 	return (!digitalRead(_sw_pin[num]));
+}
+
+int Rover::getAnalog(uint8_t num){
+	return (analogRead(num));
+}
+
+double Rover::getHCSR04(void){
+	digitalWrite(_hcsr04_trig,0);
+	delayMicroseconds(2);
+	digitalWrite(_hcsr04_trig,1);
+	delayMicroseconds(10);
+	digitalWrite(_hcsr04_trig,0);
+	_hcsr04_val=pulseIn(_hcsr04_echo,HIGH);
+	if(_hcsr04_val>0.0){
+		_hcsr04_val=_hcsr04_val*17.0/1000.0;
+		return (_hcsr04_val);
+	}
+	return 0.0;
 }

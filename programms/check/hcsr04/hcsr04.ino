@@ -5,6 +5,6 @@ void setup(void){
 }
 
 void loop(void){
-	Serial.println(rover.getBNO(0.0));
-	delay(100);
+	Serial.println(rover.getHCSR04());
+	delay(50);
 }

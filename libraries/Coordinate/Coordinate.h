@@ -22,9 +22,9 @@ public:
 };
 
 
-double hypotenuse(Coordinate xy,Coordinate ab);
-double theta(Coordinate xy,Coordinate ab);
-double GPShypotenuse(Coordinate xy,Coordinate ab);
-double GPStheta(Coordinate xy,Coordinate ab);
+double hypotenuse(Coordinate ab,Coordinate xy);
+double theta(Coordinate ab,Coordinate xy);
+double GPShypotenuse(Coordinate ab,Coordinate xy);
+double GPStheta(Coordinate ab,Coordinate xy);
 
 #endif //#ifndef _COORDINATE_

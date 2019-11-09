@@ -43,7 +43,7 @@ public:
 	uint32_t sat(void);
 
 	//BNO055
-	double getBNO(void);
+	double getBNO(double n);
 
 	//LED
 	void led3(bool a,bool b,bool c);
@@ -51,6 +51,12 @@ public:
 
 	//BUTTON
 	bool getSW(uint8_t num);
+
+	//analog
+	int getAnalog(uint8_t num);
+
+	//hcsr04
+	double getHCSR04(void);
 
 private:
 	Servo _flag;
@@ -63,8 +69,12 @@ private:
 		{8,7,10}
 	};
 	const uint8_t _led_pin[3]={31,33,35};
-	const uint8_t _sw_pin[2]{41,37};
+	const uint8_t _sw_pin[2]={41,37};
+	const uint8_t _hcsr04_trig=A9;
+	const uint8_t _hcsr04_echo=A10;
+	double _hcsr04_val=0;
 	unsigned long _start_time=0;
+	double _dir=0.0;
 };
 
 extern Rover rover;
